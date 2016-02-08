@@ -1,0 +1,189 @@
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Google Maps APIの練習</title>
+  <script src="http://maps.google.com/maps/api/js?language=ja"></script>
+  <style>
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    position: relative;
+  }
+  #map {
+    width: 100%;
+    height: 100%;
+    float: right;
+  }
+  #list-box {
+    width: 300px;
+    height: 500px;
+    overflow: auto;
+    position: absolute;
+    top: 10;
+    left: 10px;
+    z-index: 100;
+    background: #fff;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    padding: 10px;
+  }
+  h1 {
+    padding: 5px 0;
+    font-size: 22px;
+    background: tomato;
+    text-align: center;
+    border-radius: 10px;
+  }
+  #list {
+    margin: 0;
+    padding: 0;
+  }
+  #list li {
+    padding: 10px;
+    border-top: 2px solid deeppink;
+    border-right: 5px solid skyblue;
+    border-left: 5px solid skyblue;
+    border-bottom: 2px solid tomato;
+    list-style-type: none;
+  }
+  #list > p{
+    padding: 15px;
+  }
+  </style>
+</head>
+<body>
+  <div id="list-box">
+    <h1>店舗リスト</h1>
+    <ul id="list"></ul>
+  </div>
+
+  <div id="map"></div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script>
+  function initialize() {
+    //マーカーの情報
+    var data = [
+      {
+        shopname: '東京駅',
+        lat: '35.681382',
+        lng: '139.7660843',
+        content: '東京駅<br />迷子にならないように気をつけてください！', //情報ウィンドウの内容
+      },
+      {
+        shopname: '八重洲ブックセンター',
+        lat: '35.678187',
+        lng: '139.76817',
+        content: '<span style="color:skyblue">八重洲ブックセンターはこちらです。二十四時間営業</span>',
+      },
+      {
+        shopname: 'ここどこ商店',
+        lat: '35.678137',
+        lng: '139.76213',
+        content: '<span style="color:deeppink">ここどこーーーーーーーーーーーーーーーーーーーーーーーーーーー</span>',
+      },
+      {
+        shopname: 'どこもショップ',
+        lat: '35.661437',
+        lng: '139.75119',
+        content: 'ただの携帯屋さん。それ以上でもそれ以下でもない。',
+      },
+      {
+        shopname: '餃子の王将',
+        lat: '35.674137',
+        lng: '139.76327',
+        content: '24時間営業。しゃっせーい',
+      },
+      {
+        shopname: 'つくもPC',
+        lat: '35.694137',
+        lng: '139.66327',
+        content: 'つくもPCの本店です。お待ちしております。',
+      }
+    ];
+
+    // data配列から、画面範囲外の配列を取り除く
+    // data.shift();
+
+    //初期位置に、上記配列の最初の緯度経度を格納
+    var latlng = new google.maps.LatLng(data[0].lat, data[0].lng);
+    // debugger;
+    var opts = {
+      zoom: 15,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      streetViewControl : false,
+      panControl : false,
+      animation : google.maps.Animation.BOUNCE,
+      flat : true,
+    };
+    var map = new google.maps.Map(document.getElementById("map"), opts);
+
+    var markers = new Array();
+    //マーカーを配置するループ
+    // for (i = 0; i < data.length; i++) {
+    //   markers[i] = new google.maps.Marker({
+    //     position: new google.maps.LatLng(data[i].lat, data[i].lng),
+    //     map: map
+    //   });
+    //   markerInfo(markers[i], data[i].shopname);
+    // }
+
+    // 地図の表示領域が変更されたらイベントを発生させる
+    //イベント登録 地図の表示領域が変更されたらイベントを発生させる
+    google.maps.event.addListener(map, 'idle', function() {
+      // マーカーを全削除
+      markers.forEach(function(marker, idx) {
+        marker.setMap(null);
+      });
+      // alert("cleate markers");
+      var li_items = "";
+      //マーカーを再読み込み
+      for (i = 0; i < data.length; i++) {
+        markers[i] = new google.maps.Marker({
+          position: new google.maps.LatLng(data[i].lat, data[i].lng),
+          map: map
+        });
+
+        // マーカのリスナーをセット
+        markerInfo(markers[i], data[i].shopname);
+
+        // リストの構築
+        li_items += '<li>' + data[i].shopname + "</li>\n";
+        li_items += '<p>' + data[i].content + "</p>\n";
+      }
+
+      // リストの生成
+      $("#list").html(li_items);
+      $("#list").hide();
+      $("#list").slideToggle(1000);
+    });
+
+  }
+
+  // マーカー関係
+  function markerInfo(marker, name) {
+    var infoWindow = new google.maps.InfoWindow({
+      content: name
+    });
+    // マウスオーバーで情報ウィンドウ表示
+    google.maps.event.addListener(marker, 'mouseover', function (event) {
+      infoWindow.open(marker.getMap(), marker);
+    });
+    // マウスアウトで情報ウィンドウ非表示
+    google.maps.event.addListener(marker, 'mouseout', function (event) {
+      infoWindow.close();
+    });
+    // マーカークリックでアラート
+    google.maps.event.addListener(marker, 'click', function (event) {
+      alert(name);
+    });
+  }
+
+  //地図描画を実行
+  google.maps.event.addDomListener(window, 'load', initialize);
+
+  </script>
+</body>
+</html>
