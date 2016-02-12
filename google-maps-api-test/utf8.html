@@ -1,7 +1,7 @@
 <html lang="ja">
 <head>
   <meta charset="shift_jis">
-  <title>Google Maps API�̗��K</title>
+  <title>Google Maps APIの練習</title>
   <script src="http://maps.google.com/maps/api/js?language=ja"></script>
   <style>
   * {
@@ -54,7 +54,7 @@
 </head>
 <body>
   <div id="list-box">
-    <h1>�X�܃��X�g</h1>
+    <h1>店舗リスト</h1>
     <ul id="list"></ul>
   </div>
 
@@ -62,67 +62,67 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script>
-  // MAP�̕\���̈�
+  // MAPの表示領域
   var swlat = null;
   var swlng = null;
   var nelat = null;
   var nelng = null;
 
   function initialize() {
-    //�}�[�J�[�̏��
+    //マーカーの情報
     var data = [
       {
-        shopname: '�g�ˎ��w',
+        shopname: '吉祥寺駅',
         lat: '35.703153',
         lng: '139.580077',
-        content: '�g�ˎ��w�i�������傤�������j�́A�����s������s�g�ˎ��쒬�꒚�ڋy�ѓ��񒚖ڂɂ���A�����{���q�S���iJR�����{�j�E�����d�S�̉w�ł���B',
+        content: '吉祥寺駅（きちじょうじえき）は、東京都武蔵野市吉祥寺南町一丁目及び同二丁目にある、東日本旅客鉄道（JR東日本）・京王電鉄の駅である。',
       },
       {
-        shopname: '���\����i�͂����イ�͂���j',
+        shopname: '八十八夜（はちじゅうはちや）',
         lat: '35.702511',
         lng: '139.576779',
-        content: '<span style="color:tomato">�g�ˎ��w����k����T���̏ꏊ�ɂ���u���\����v�ł��B<br>�������ȕ��͋C�ƍ��Y�̐H�ނɂ�������Ă��邨�������������Ől�C�̃J�t�F�Ƃ��Ēm���Ă��܂��B<br>��񂿂����ꏏ�ɓ����̂ŁA��̓������ŎU���������Ƃɗ�����邱�Ƃ��ł��܂��I</span>',
+        content: '<span style="color:tomato">吉祥寺駅から徒歩約５分の場所にある「八十八夜」です。<br>お洒落な雰囲気と国産の食材にこだわっているおいしいお料理で人気のカフェとして知られています。<br>わんちゃんも一緒に入れるので、井の頭公園で散歩したあとに立ち寄ることもできます！</span>',
       },
       {
-        shopname: '�A�����^�H��',
+        shopname: 'アムリタ食堂',
         lat: '35.704497',
         lng: '139.576276',
-        content: '<span style="color:deeppink">�g�ˎ��w�k������k��5���I<br>�{�i�^�C���������킦�邨�X�ł��B<br>�����ڂ��炵�Ă�����肪�������邩�Ǝv���܂��I�����`���I�X�X���ł����A��̓��C�g�A�b�v����Ă��Ă�蕵�͋C���ǂ��ł��I</span>',
+        content: '<span style="color:deeppink">吉祥寺駅北口から徒歩5分！<br>本格タイ料理が味わえるお店です。<br>見た目からしてこだわりが感じ取れるかと思います！ランチもオススメですが、夜はライトアップされていてより雰囲気が良いです！</span>',
       },
       {
-        shopname: '�y�p�J�t�F�t�H���X�g',
+        shopname: 'ペパカフェフォレスト',
         lat: '35.698923',
         lng: '139.576910',
-        content: '��̓������̒��ɂ���J�t�F�ł��B<br>�g�ˎ��w�������ƌ����̉��̕��ɗ��n���Ă���̂ŁA�U�􂵂Ȃ��痧�����܂��I<br>�؁X��΂̋߂��ɂ���̂ŁA�ƂĂ����₩�ȋC�����ɂȂ�܂���[�I',
+        content: '井の頭公園の中にあるカフェです。<br>吉祥寺駅から入ると公園の奥の方に立地しているので、散策しながら立ち寄れます！<br>木々や湖の近くにあるので、とても穏やかな気持ちになれますよー！',
       },
       {
         shopname: 'alley cafe',
         lat: '35.702867',
         lng: '139.577963',
-        content: '�g�ˎ��w�̌��������o�āA�����̂Ƃ���ɂ���܂��I<br>�r���Q�̈�p�ɂ���܂��̂ŁA�����Ƃ��Ȃ��悤���ӂ��K�v�ł��B<br>�X���͂�����܂�Ƃ��Ă���A�C���e���A���Ȃ�Ƃ����킢�炵���̂ŁA���q�����ɐl�C�������ł��I',
+        content: '吉祥寺駅の公園口を出て、すぐのところにあります！<br>ビル群の一角にありますので、見落とさないよう注意が必要です。<br>店内はこじんまりとしており、インテリアがなんともかわいらしいので、女子たちに人気が高いです！',
       },
       {
-        shopname: '�n�����b�N�J�t�F�@�}�q�J�}�m',
+        shopname: 'ハンモックカフェ　マヒカマノ',
         lat: '35.702320',
         lng: '139.582218',
-        content: '�g�ˎ��w����k��5�������ł��I<br>�X���͑z���ȏ�Ƀn�����b�N�ł��I��<br>�����A�������������āA����^�C�v�̃n�����b�N���قƂ�ǂł��̂ŁA���S���Ă��낰�܂��B<br>�n�����b�N�̂��X�ƃZ�b�g�ɂȂ��Ă��čL�X�Ƃ�����Ԃł��̂ŁA�C���˂Ȃ��A���낮���Ƃ��ł��܂��B',
+        content: '吉祥寺駅から徒歩5分圏内です！<br>店内は想像以上にハンモックです！笑<br>ただ、清潔感があって、座るタイプのハンモックがほとんどですので、安心してくつろげます。<br>ハンモックのお店とセットになっていて広々とした空間ですので、気兼ねなく、くつろぐことができます。',
       },
       {
-        shopname: "�k��",
+        shopname: "北東",
         lat: '35.7190253513',
         lng: '139.599998971',
-        content: '�k���ł��B',
+        content: '北東です。',
       },
       {
-        shopname: "�쐼",
+        shopname: "南西",
         lat: '35.687277488069',
         lng: '139.56016428',
-        content: '�쐼�ł��B',
+        content: '南西です。',
 
       }
     ];
 
-    //�����ʒu�ɁA��L�z��̍ŏ��̈ܓx�o�x���i�[
+    //初期位置に、上記配列の最初の緯度経度を格納
     var latlng = new google.maps.LatLng(data[0].lat, data[0].lng);
 
     var opts = {
@@ -139,26 +139,26 @@
 
     var markers = new Array();
 
-    // ���ꂪ�Ȃ���getBounds�������Ȃ�
+    // これがないとgetBoundsが動かない
     google.maps.event.addListener(map, 'bounds_changed', function() {
 
     });
 
-    // �n�}�̕\���̈悪�ύX���ꂽ��C�x���g�𔭐�������
-    //�C�x���g�o�^ �n�}�̕\���̈悪�ύX���ꂽ��C�x���g�𔭐�������
+    // 地図の表示領域が変更されたらイベントを発生させる
+    //イベント登録 地図の表示領域が変更されたらイベントを発生させる
     google.maps.event.addListener(map, 'idle', function() {
-      // �}�[�J�[��S�폜
+      // マーカーを全削除
       markers.forEach(function(marker, idx) {
         marker.setMap(null);
       });
 
-      // MAP�̕\���̈�̎擾
+      // MAPの表示領域の取得
       getLatLngBounds(map);
 
       var li_items = "";
-      //�}�[�J�[���ēǂݍ���
+      //マーカーを再読み込み
       for (i = 0; i < data.length; i++) {
-        // �͈͂ɓ����Ă��������擾
+        // 範囲に入っているやつだけ取得
         if (!(data[i].lat > swlat &&
               data[i].lng > swlng &&
               data[i].lat < nelat &&
@@ -170,61 +170,61 @@
           position: new google.maps.LatLng(data[i].lat, data[i].lng),
           map: map
         });
-        // �}�[�J�̃��X�i�[���Z�b�g
+        // マーカのリスナーをセット
         markerInfo(markers[i], data[i].shopname, data[i].content);
-        // ���X�g�̍\�z
+        // リストの構築
         li_items += '<li>' + data[i].shopname + "</li>\n";
         li_items += '<p>' + data[i].content + "</p>\n";
       }
-      // ���X�g�̐���
+      // リストの生成
       $("#list").html(li_items);
       $("#list").hide();
       $("#list").slideToggle(1000);
     });
   }
 
-  // �}�[�J�[�֌W
+  // マーカー関係
   function markerInfo(marker, name, content) {
     var infoWindow = new google.maps.InfoWindow({
       content: name
     });
-    // �}�E�X�I�[�o�[�ŏ��E�B���h�E�\��
+    // マウスオーバーで情報ウィンドウ表示
     google.maps.event.addListener(marker, 'mouseover', function (event) {
       infoWindow.open(marker.getMap(), marker);
     });
-    // �}�E�X�A�E�g�ŏ��E�B���h�E��\��
+    // マウスアウトで情報ウィンドウ非表示
     google.maps.event.addListener(marker, 'mouseout', function (event) {
       infoWindow.close();
     });
-    // �}�[�J�[�N���b�N�ŃA���[�g
+    // マーカークリックでアラート
     google.maps.event.addListener(marker, 'click', function (event) {
       alert(content);
     });
   }
 
-  // MAP�̕\���̈�̎擾
+  // MAPの表示領域の取得
   function getLatLngBounds(map) {
-    // data�z�񂩂�A��ʔ͈͊O�̔z�����菜��
+    // data配列から、画面範囲外の配列を取り除く
     var latlngBounds = map.getBounds();
 
-    /* �쐼�i�����j�̈ܓx�o�x�擾 */
+    /* 南西（左下）の緯度経度取得 */
     var sw = latlngBounds.getSouthWest() ;
     swlat = sw.lat();
     swlng = sw.lng();
 
-    // alert( "[�쐼�̒[�̈ʒu���W]\n" + swlat + ", " + swlng);
+    // alert( "[南西の端の位置座標]\n" + swlat + ", " + swlng);
 
-    /* �k���̈ʒu���W��LatLng�N���X�Ŏ��o�� */
+    /* 北東の位置座標をLatLngクラスで取り出す */
     var ne = latlngBounds.getNorthEast() ;
     nelat = ne.lat();
     nelng = ne.lng();
 
-    // alert( "[�k���̒[�̈ʒu���W]\n" + nelat + ", " + nelng);
+    // alert( "[北東の端の位置座標]\n" + nelat + ", " + nelng);
 
     return false;
   }
 
-  //�n�}�`������s
+  //地図描画を実行
   google.maps.event.addDomListener(window, 'load', initialize);
   </script>
 </body>
