@@ -41,6 +41,12 @@ var list = [
     ]
   },
   {
+    "dir_name": "kaomoji-javascript",
+    "files": [
+      "index.html"
+    ]
+  },
+  {
     "dir_name": "stickybox",
     "files": [
       "index.html"
