@@ -72,7 +72,7 @@ var list = [
       "for.html",
       "model.html",
       "on.html",
-      "show.html"
+      "show-if.html"
     ]
   },
   {
