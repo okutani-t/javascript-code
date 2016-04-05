@@ -65,6 +65,17 @@ var list = [
     ]
   },
   {
+    "dir_name": "vue.js",
+    "files": [
+      "class.html",
+      "counter.html",
+      "for.html",
+      "model.html",
+      "on.html",
+      "show.html"
+    ]
+  },
+  {
     "dir_name": "wow-animate",
     "files": [
       "index.html"
