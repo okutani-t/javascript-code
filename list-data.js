@@ -23,6 +23,12 @@ var list = [
     ]
   },
   {
+    "dir_name": "highlight.js",
+    "files": [
+      "index.html",
+    ]
+  },
+  {
     "dir_name": "particle-universe",
     "files": [
       "index.html"
