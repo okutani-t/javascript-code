@@ -35,6 +35,12 @@ var list = [
     ]
   },
   {
+    "dir_name": "sl.js",
+    "files": [
+      "index.html"
+    ]
+  },
+  {
     "dir_name": "start-javascript",
     "files": [
       "numgame/index.html",
