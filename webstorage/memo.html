@@ -53,6 +53,7 @@ h1 {
   if (lsCheck()) {
     var s = localStorage;
     var memoObj = document.getElementById("memo");
+    var msg = document.getElementById("load_msg");
 
     // データがあったらtextareaに吐く
     if (s.getItem('memo')) {
@@ -64,6 +65,10 @@ h1 {
       // 保存
       document.getElementById("save").onclick = function(){
         s.setItem('memo', memoObj.value);
+        msg.style.display = 'block';
+        setTimeout( function() {
+          msg.style.display = 'none';
+        }, 1000);
       };
       // リセット
       document.getElementById("reset").onclick = function(){
@@ -83,7 +88,6 @@ h1 {
     document.onkeyup = function (e){
       if(!e) e = window.event; // レガシー
       s.setItem('memo', memoObj.value);
-      var msg = document.getElementById("load_msg");
       setTimeout( function() {
         msg.style.display = 'block';
       }, 1000);
