@@ -35,6 +35,12 @@ var list = [
     ]
   },
   {
+    "dir_name": "show-ip",
+    "files": [
+      "webrtc.html"
+    ]
+  },
+  {
     "dir_name": "sl.js",
     "files": [
       "index.html"
@@ -79,6 +85,13 @@ var list = [
       "model.html",
       "on.html",
       "show-if.html"
+    ]
+  },
+  {
+    "dir_name": "webstorage",
+    "files": [
+      "memo.html",
+      "test.html"
     ]
   },
   {
