@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>HTML5 MEMO</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 </head>
@@ -12,6 +12,7 @@
 body {
   text-align: center;
   background: #333;
+  -webkit-text-size-adjust: 100%;
 }
 h1 {
   text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaaaaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 20px 20px rgba(0, 0, 0, 0.15);
@@ -19,6 +20,11 @@ h1 {
   font-family: "League Gothic", Impact, sans-serif;
   letter-spacing: 0.02em;
   font-size: 100px;
+}
+@media screen and (max-width: 768px){
+  h1 {
+    font-size: 40px;
+  }
 }
 #memo {
   margin-bottom: 20px;
