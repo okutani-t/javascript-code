@@ -72,8 +72,10 @@ h1 {
       };
       // リセット
       document.getElementById("reset").onclick = function(){
-        memoObj.value = '';
-        s.removeItem('memo');
+        if (confirm("本当にリセットしますか？")){
+          memoObj.value = '';
+          s.removeItem('memo');
+        }
       };
     };
 
