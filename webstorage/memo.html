@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>HTML5 MEMO</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
   <style>
@@ -45,6 +47,7 @@
   if (lsCheck()) {
     var s = localStorage;
     var memoObj = document.getElementById("memo");
+    var msg = document.getElementById("load_msg");
 
     // データがあったらtextareaに吐く
     if (s.getItem('memo')) {
@@ -56,11 +59,17 @@
       // 保存
       document.getElementById("save").onclick = function(){
         s.setItem('memo', memoObj.value);
+        msg.style.display = 'block';
+        setTimeout( function() {
+          msg.style.display = 'none';
+        }, 1000);
       };
       // リセット
       document.getElementById("reset").onclick = function(){
-        memoObj.value = '';
-        s.removeItem('memo');
+        if (confirm("本当にリセットしますか？")){
+          memoObj.value = '';
+          s.removeItem('memo');
+        }
       };
     };
 
@@ -75,7 +84,6 @@
     document.onkeyup = function (e){
       if(!e) e = window.event; // レガシー
       s.setItem('memo', memoObj.value);
-      var msg = document.getElementById("load_msg");
       setTimeout( function() {
         msg.style.display = 'block';
       }, 1000);
