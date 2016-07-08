@@ -16,6 +16,12 @@ var list = [
     ]
   },
   {
+    "dir_name": "countdown-timer",
+    "files": [
+      "index.html"
+    ]
+  },
+  {
     "dir_name": "google-maps-api-test",
     "files": [
       "index.html",
