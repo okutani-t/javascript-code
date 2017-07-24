@@ -14,6 +14,10 @@ $ ./node_modules/.bin/webpack
 
 * show dist/index.html
 
+or
+
+* show sample.html
+
 ## Author
 
 [okutani](http://okutani.net)
