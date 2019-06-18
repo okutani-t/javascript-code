@@ -1,15 +1,17 @@
 ## Webpack sample
 
-Webpack4を動作させるサンプル
+Webpack4 + babel7を動作させるサンプル
 
 ## HOW TO RUN
 
 以下を実行
 
-### ホットリローディング
+### Devサーバー
 
 ```bash
-$ yarn run webpack-dev-server -- --inline --hot
+$ ./node_modules/.bin/webpack-dev-server
+or
+$ yarn run start
 ```
 
 `http://localhost:8080` にアクセス
@@ -18,33 +20,53 @@ $ yarn run webpack-dev-server -- --inline --hot
 
 ```bash
 $ yarn run webpack
+or
+$ yarn run build
 ```
 
 index.htmlを開く
 
 ## 導入時メモ
 
-yarnを入れておく
+### yarn導入
 
 ```bash
 $ brew install yarn
 ```
 
-以下のコマンドを実行して初期設定をおこなう
+### package.jsonの作成
 
 ```bash
 $ yarn init -y
-$ yarn add webpack webpack-cli webpack-dev-server --dev
 ```
 
-.gitignoreを追加。
+### Webpack導入
+
+```bash
+$ yarn add webpack webpack-cli --dev
+```
+
+### webpack-dev-server導入
+
+```bash
+$ yarn add webpack-dev-server --dev
+```
+
+### babel導入
+
+```bash
+$ yarn add @babel/core @babel/preset-env babel-loader --dev
+```
+
+### .gitignore追加
 
 ```bash
 $ echo node_modules > .gitignore
-$ echo dist >> .gitignore
 ```
 
-webpack.config.js の準備
+### 設定・関連ファイルの準備
+
+webpack.config.js の準備。
 
 ```bash
 $ touch webpack.config.js # write code...

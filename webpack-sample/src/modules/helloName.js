@@ -1,3 +1,5 @@
-export default function helloName(name) {
-    alert('hello, ' + name + '!')
+const helloName = (name) => {
+  alert('hello, ' + name + '!')
 }
+
+export default helloName

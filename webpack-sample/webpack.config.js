@@ -1,11 +1,29 @@
 module.exports = {
   mode: 'development',
-  // エントリーポイント
   entry: './src/index.js',
   output: {
-    // 出力ファイル名
     filename: 'main.js',
-    // 出力先
     path: `${__dirname}/dist`
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              [
+                '@babel/preset-env'
+              ]
+            ]
+          }
+        }
+      }
+    ]
+  },
+  devServer: {
+    contentBase: "dist",
+    open: true
   }
 };
