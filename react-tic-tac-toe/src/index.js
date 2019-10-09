@@ -109,6 +109,8 @@ class Game extends React.Component {
     let status
     if (winner) {
       status = 'Winner: ' + winner
+    } else if (this.state.gameIsDraw) {
+      status = 'The game was a draw!'
     } else {
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O')
     }
@@ -122,7 +124,7 @@ class Game extends React.Component {
           />
         </div>
         <div className="game-info">
-          <div>{this.state.gameIsDraw ? 'The game was a draw!' : status}</div>
+          <div>{status}</div>
           <div>{'Step Number: ' + this.state.stepNumber}</div>
           <ol>{moves}</ol>
         </div>
