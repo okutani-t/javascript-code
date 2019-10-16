@@ -5,11 +5,9 @@ import { createStore } from 'redux'
 import todoApp from './reducers'
 import { addTodo } from './actions'
 import App from './components/App'
+import './index.css'
 
 const store = createStore(todoApp)
-
-store.dispatch(addTodo('Hello React!'))
-store.dispatch(addTodo('Hello Redux!'))
 
 ReactDOM.render(
   <Provider store={store}>

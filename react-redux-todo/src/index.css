@@ -1,0 +1,6 @@
+@import 'https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css';
+
+input {
+  display: inline-block !important;
+  width: 400px;
+}
