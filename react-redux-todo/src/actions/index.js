@@ -14,3 +14,16 @@ export const toggleTodo = (id) => {
     id
   }
 }
+
+export const changeText = (text) => {
+  return {
+    type: 'CHANGE_TEXT',
+    text
+  }
+}
+
+export const removeText = () => {
+  return {
+    type: 'REMOVE_TEXT'
+  }
+}

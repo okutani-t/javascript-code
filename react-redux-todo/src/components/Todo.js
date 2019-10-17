@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const Todo = ({ onClick, completed, text }) => (
   <li
     onClick={onClick}
-    class={ completed ? 'done' : '' }
+    className={ completed ? 'done' : '' }
   >
     {text}
   </li>
