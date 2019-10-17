@@ -1,5 +1,16 @@
 @import 'https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css';
 
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+main {
+  max-width: 600px;
+  margin: 30px auto 0;
+}
+
 input {
   display: inline-block !important;
   width: 400px;
@@ -12,4 +23,19 @@ li {
 .done {
   text-decoration: line-through !important;
   font-weight: bold;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  padding: 30px;
+  background: #f8f8f8;
+  width: 100%;
+  box-shadow: 0 0 3px #ccc;
+}
+
+footer a,
+footer span {
+  display: inline-block;
+  margin-left: 15px;
 }
