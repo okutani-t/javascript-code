@@ -1,33 +1,28 @@
-const todo = (state, action) => {
-  switch(action.type) {
-    case 'ADD_TODO':
-      return {
-        id: action.id,
-        text: action.text,
-        completed: false
-      }
-    case 'TOGGLE_TODO':
-      if (state.id === action.id) {
-        return Object.assign({}, state, {
-          completed: !state.completed
-        })
-      }
-      return state
-    default:
-      return state
+const isValidText = (text) => {
+  if (text === '' || text === ' ' || text === '　') {
+    return false
   }
+  return true
 }
 
 const todos = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TODO':
+      if (!isValidText(action.text)) {
+        return state
+      }
+
       return [
         ...state,
-        todo(undefined, action)
+        {
+          id: action.id,
+          text: action.text,
+          completed: false
+        }
       ]
     case 'TOGGLE_TODO':
-      return state.map((t) =>
-        todo(t, action)
+      return state.map((todo) =>
+        todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
       )
     default:
       return state

@@ -3,16 +3,10 @@ import FilterLink from '../containers/FilterLink'
 
 const Footer = () => (
   <footer>
-    SHOW:
-    <FilterLink filter='SHOW_ALL'>
-      ALL
-    </FilterLink>
-    <FilterLink filter='SHOW_ACTIVE'>
-      ACTIVE
-    </FilterLink>
-    <FilterLink filter='SHOW_COMPLETED'>
-      COMPLETED
-    </FilterLink>
+    <span>SHOW:</span>
+    <FilterLink filter='SHOW_ALL'>ALL</FilterLink>
+    <FilterLink filter='SHOW_ACTIVE'>ACTIVE</FilterLink>
+    <FilterLink filter='SHOW_COMPLETED'>COMPLETED</FilterLink>
   </footer>
 )
 

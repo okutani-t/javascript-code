@@ -3,10 +3,8 @@ import todos from './todos'
 import inputText from './inputText'
 import visibilityFilter from './visibilityFilter'
 
-const todoApp = combineReducers({
+export default combineReducers({
   todos,
   inputText,
   visibilityFilter
 })
-
-export default todoApp
