@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Moment.js test</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js"></script>
+</head>
+<body>
+  <h1>Moment.js test code</h1>
+  <p><a href="https://momentjs.com/">Moment.js</a></p>
+  <p>コンソールを表示して確認してください</p>
+
+  <script>
+    console.log(moment().format())
+    console.log(moment().format('YYYY年MM月DD日(ddd) HH:mm:ss'))
+    console.log(moment().format('YYYY.MM.DD'))
+    console.log(moment('2020-01-10 19:15:10').format('YYYY/MM/DD'))
+  </script>
+</body>
+</html>
