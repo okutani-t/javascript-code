@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Immutable.js</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/immutable/3.8.2/immutable.min.js"></script>
+  </head>
+  <body>
+    <h1>Immutable.js test</h1>
+    <p>See console</p>
+    <script>
+     const MyRecord = Immutable.Record({ a: 1, b: 2 })
+     const record = new MyRecord({ b: 3 })
+     console.log(record.get('a'))
+     record.set('a', 2)
+     console.log(record.get('a'))
+     const newRecord = record.set('a', 2)
+     console.log(newRecord.get('a'))
+    </script>
+  </body>
+</html>
