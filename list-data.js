@@ -65,6 +65,12 @@ var list = [
     ]
   },
   {
+    "dir_name": "intersection-observer-sample",
+    "files": [
+      "index.html"
+    ]
+  },
+  {
     "dir_name": "kaomoji-javascript",
     "files": [
       "index.html"

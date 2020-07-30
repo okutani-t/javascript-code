@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Intersection Observer Sample</title>
+
+  <link rel="stylesheet" href="./styles.css">
+  <!-- polyfill @see https://github.com/w3c/IntersectionObserver/tree/master/polyfill -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"></script>
+  <script src="./index.js"></script>
+</head>
+
+<body>
+  <header id="header" class="invisible">
+    <div class="container">
+      <h1>Intersection Observer Sample!</h1>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2 class="invisible">Title1</h2>
+    <p>sample text, sample text, sample text, sample text, sample text, sample text.</p>
+    <img src="" data-src="./sample1.png" class="invisible" />
+
+    <h2 class="invisible">Title2</h2>
+    <p>sample text, sample text, sample text, sample text, sample text, sample text.</p>
+    <img src="" data-src="./sample2.png" class="invisible" />
+
+    <div id="header_target">
+      <h2 class="invisible">Title3</h2>
+      <p>sample text, sample text, sample text, sample text, sample text, sample text.</p>
+      <img src="" data-src="./sample3.png" class="invisible" />
+
+      <h2 class="invisible">Title4</h2>
+      <p>sample text, sample text, sample text, sample text, sample text, sample text.</p>
+      <img src="" data-src="./sample4.png" class="invisible" />
+
+      <h2 class="invisible">Title5</h2>
+      <p>sample text, sample text, sample text, sample text, sample text, sample text.</p>
+      <img src="" data-src="./sample5.png" class="invisible" />
+    </div>
+  </main>
+</body>
+
+</html>
